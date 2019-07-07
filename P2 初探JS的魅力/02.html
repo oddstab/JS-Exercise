@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //class是例外 其他的都可以直接用html屬性套到js
+        function Change() {
+            var cc = document.getElementById('wow');
+
+            cc.className = "";
+        }
+
+        function change2() {
+            var cc = document.getElementById('wow');
+
+            cc.className = "bgred";
+        }
+    </script>
+    <style>
+        #wow {
+            border: 2px solid #432;
+        }
+
+        .bgred {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:()" id="wow" class="bgred" onclick="change2()">Link</a>
+    <a href="javascript:()" onclick="Change()">修改特定class的內容</a>
+</body>
+
+</html>

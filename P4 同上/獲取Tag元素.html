@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getElementTagName</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            float: left;
+            margin: 20px;
+        }
+
+        ::selection {
+            /*反白的文字*/
+            background: #ADADAD;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aDiv = document.getElementsByTagName('div');
+            for (let index = 0; index < aDiv.length; index++) {
+                aDiv[index].style.background = 'red';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>dasdasdasdasdasd</div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

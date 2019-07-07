@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        function SetText() {
+            //在javascript裡面，所有有 . 的東西都可以用中括號代替
+            var odiv = document.getElementById('div1');
+
+            //第一種操作屬性的方式
+            // odiv.title = '???';
+            // odiv.innerHTML = "?????";
+
+            //第二種操作屬性的方法 ， 中括號
+            //xxx.style是加在行內 
+            var text = document['getElementById']('ip')['value'];
+
+            if (text != "" && text!=null) {
+                odiv["innerHTML"] = "你的名字是：" + text + "<br/>歡迎您！";
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="text" name="" id="ip" placeholder="請輸入姓名">
+    <button onclick="SetText()">確認</button>
+    <button onclick="SetText()">變寬</button>
+    <button onclick="">變高</button>
+    <button onclick="">變綠</button>
+    <div id="div1" title="呵呵"></div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #f0f;
+        }
+        button{
+            border:1px solid rosybrown;
+            background: #4d1;
+            color: rgb(45, 31, 129);
+            outline: none;
+        }
+        button:hover{
+            border: 1px solid darkviolet;
+            color: darkgreen;
+            cursor: pointer;
+        }
+        button:active{
+            color: darkorange;
+            border: 1px solid greenyellow;
+        }
+    </style>
+    <script>
+        function changeColor(color) {
+            var odiv = document.getElementById('div1');
+            odiv.style.background = color;
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="changeColor('green')">變綠</button>
+    <button onclick="changeColor('blue')">變藍</button>
+    <button onclick="changeColor('red')">變紅</button>
+    <div id="div1"></div>
+</body>
+
+</html>

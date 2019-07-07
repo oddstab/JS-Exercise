@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            background: rgb(136, 134, 141);
+            margin: 0 0;
+            border: none;
+            cursor: pointer;    
+        }
+
+        #div1 .active {
+            background: rgb(130, 233, 111);
+        }
+
+        #div1 div {
+            width: 200px;
+            height: 200px;
+            background: rgb(79, 192, 136);
+            border: 1px solid rgb(50, 146, 98);
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var aBtn = oDiv.getElementsByTagName('button');
+            var aDiv = oDiv.getElementsByTagName('div');
+
+            //直接把自訂屬性寫在html的話瀏覽器不認識，用js就不會
+            for (var i = 0; i < aBtn.length; i++) {
+                aBtn[i].index = i;
+                aBtn[i].onclick = function () {
+                    // alert(this.innerHTML);
+                    for(var i = 0;i<aBtn.length;i++){
+                        aBtn[i].className='';
+                        aDiv[i].style.display='none';
+                    }
+                    this.className = 'active';
+                    aDiv[this.index].style.display='block';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <button class="active">教育</button>
+        <button>培訓</button>
+        <button>招生</button>
+        <button>谷哥</button>
+
+        <div style="display: block">教育人才</div>
+        <div>培訓人才</div>
+        <div>招生萬歲</div>
+        <div>Google最強</div>
+    </div>
+</body>
+
+</html>

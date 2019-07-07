@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function () {
+            var Allchk = document.getElementById('btn1');
+            var NNchk = document.getElementById('btn2');
+            var odiv = document.getElementById('div1');
+            var aChk = odiv.getElementsByTagName('input');
+
+            Allchk.onclick = Select;
+            NNchk.onclick = NOSelect;
+            var a = false;
+            function Select() {
+                if (a) {
+                    a = false;
+                } else {
+                    a = true;
+                }
+                for (let index = 0; index < aChk.length; index++) {
+                    aChk[index].checked = a;
+                }
+            }
+
+            function NOSelect() {
+                for (var i = 0; i < aChk.length; i++) {
+                    /* if(aChk[i].checked){
+                        aChk[i].checked = false;
+                    }
+                    else{
+                        aChk[i].checked =true;
+                    } */
+                    aChk[i].checked = !aChk[i].checked;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1">全選</button>
+    <button id="btn2">反選</button>
+    <div id="div1">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+    </div>
+</body>
+
+</html>

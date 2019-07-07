@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link id="aa" rel="stylesheet" href="1.css">
+    <script>
+        var aa = document.getElementById("aa");
+        var c = 0;
+        function ChangeBGcolor() {
+            aa.href = '2.css';
+        }
+        function ChangeBGcolor1() {
+            aa.href = '1.css';
+        }
+        function ToBtn() {
+            var AA = document.getElementById("AA");
+            if(c%2==0)
+                AA.type="button";
+            else
+                AA.type="text";
+            c++;
+        }
+    </script>
 </head>
+
 <body>
-    
+    <input type="text" name="" id="AA">
+    <button onclick="ToBtn()">變換</button>
+    <button onclick="ChangeBGcolor()">變藍</button>
+    <button onclick="ChangeBGcolor1()">變黃</button>
 </body>
+
 </html>

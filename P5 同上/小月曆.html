@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            background: rgb(117, 117, 117);
+        }
+
+        .calendar {
+            border: 1px solid #000;
+            background: thistle;
+            width: 180px;
+            height: 500px;
+            margin: 40px auto;
+            padding: 50px;
+        }
+
+        h2 {
+            background: rgb(255, 163, 209);
+            color: rgb(122, 17, 70);
+            cursor: pointer;
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        h2.active {
+            background: rgb(179, 55, 117);
+            border: 1px dashed #000;
+            color: white;
+        }
+
+        .result {
+            border: 1px solid #000;
+            background: rgb(228, 204, 228);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var odiv = document.getElementsByClassName('calendar')[0];
+            var oh2 = odiv.getElementsByTagName('h2');
+            var oresult = document.getElementById('result');
+            
+            var content =[
+                '我是1號',
+                '2號是我',
+                '3333333',
+                'GGGGGGG'
+            ]
+
+            for (var i = 0; i < oh2.length; i++) {
+                oh2[i].Index = i;
+                oh2[i].onmouseover = function () {//滑鼠移入的時候
+                    for (var i = 0; i < oh2.length; i++) {//先把所有class清空
+                        oh2[i].className = '';
+                    }
+                    oh2[this.Index].className = 'active';//再把當前觸發的那個按鈕改變class
+                    oresult.innerHTML = content[this.Index];
+                }
+            }
+            // oh2[5].onmouseover = function(){
+            //     oh2[5].className = 'active';
+            // }
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="calendar">
+        <span>
+            <h2>1</h2>
+        </span>
+        <span>
+            <h2>2</h2>
+        </span>
+        <span>
+            <h2>3</h2>
+        </span>
+        <span>
+            <h2>4</h2>
+        </span>
+        <span>
+            <h2>5</h2>
+        </span>
+        <span>
+            <h2>6</h2>
+        </span>
+        <span>
+            <h2>7</h2>
+        </span>
+        <span>
+            <h2>8</h2>
+        </span>
+        <span>
+            <h2>9</h2>
+        </span>
+
+        <div id="result">
+            <h1 style="height: 30px"></h1>
+        </div>
+    </div>
+</body>
+
+</html>
