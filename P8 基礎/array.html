@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            display: block;
+        }
+    </style>
+    <script>
+        var arr = [8, 6, 3, 6, 4, 9];
+        window.onload = refresh;
+        function refresh(){
+            var text = document.getElementById('text1');
+            document.getElementById('arrDiv').innerHTML = arr;
+            text.value = '';
+        }
+        function arrMethod(str) {
+            var text = document.getElementById('text1');
+            
+            if (str == 'pop' || str == 'shift') {
+                arr[str]();
+            }
+            else {
+                arr[str](text.value);
+            }
+            refresh();
+            text.value = "";
+        }
+        function reset() {
+            arr = [8, 6, 3, 6, 4, 9];
+            refresh();
+        }
+        function spliceDelete(startindex,count) {
+            //startindex , 要刪除的數量
+            arr.splice(startindex,count);
+            refresh();
+        }
+        function spliceAdd(startindex){
+            var text = document.getElementById('text1');
+            arr.splice(startindex,0,text.value.split(','));
+            refresh();
+        }
+        function ConcatB(){
+            var text = document.getElementById('text1');
+            arr = arr.concat(text.value.split(','));
+            document.title = arr.length;
+            refresh();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="arrDiv"></div>
+    <input type="text" name="" id="text1"><button onclick="reset()" style='display:inline'>reset</button>
+    <button onclick="arrMethod('shift')">shift(從頭部刪除)</button>
+    <button onclick="arrMethod('unshift')">unshift(從頭部增加)</button>
+    <button onclick="arrMethod('push')">push(從尾巴增加)</button>
+    <button onclick="arrMethod('pop')">pop(從尾巴刪除)</button>
+    <hr>
+    <button onclick="spliceDelete(1,3)">splice(刪除)</button>
+    <button onclick="spliceAdd(1)">splice(插入)</button>
+    <button onclick="ConcatB()">Arr Concat</button>
+
+    
+</body>
+
+</html>

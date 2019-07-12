@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var w = 70;
+        function change() {
+            var oImg = document.getElementsByTagName('img');
+            oImg[0].src='https://i.imgur.com/G4gOiJP.jpg';
+            oImg[0].width = w+=10;
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="change()">按我改圖案</button>
+    <img src="https://i.imgur.com/FlSVt6u.jpg" alt="" srcset="" width="30">
+</body>
+
+</html>

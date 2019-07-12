@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        function CSS(obj,attr,value) {
+            obj.style[attr] = value;
+            alert('成功把'+obj.id+"的屬性("+attr+')變成了'+value+"!!!");
+        }
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            CSS(oDiv,'background','red');
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1" style="width: 300px;height: 300px;border:1px solid #000;margin-left: 301px;"></div>
+</body>
+
+</html>
