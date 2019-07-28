@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function New (){
+            var oTab = document.getElementById("tb1");
+            var oTr = document.createElement("tr");
+            var input = document.getElementsByTagName("input");
+            
+            var oTd = document.createElement("td");      //ID
+            oTd.innerHTML = oTab.tBodies[0].rows.length+1;
+            oTr.appendChild(oTd);
+
+            oTab.tBodies[0].appendChild(oTr);
+
+            var oTd = document.createElement("td");     //姓名
+            oTd.innerHTML = input[0].value;
+            oTr.appendChild(oTd);
+
+            oTab.tBodies[0].appendChild(oTr);
+
+            var oTd = document.createElement("td");     //年齡
+            oTd.innerHTML = input[1].value;
+            oTr.appendChild(oTd);
+
+            oTab.tBodies[0].appendChild(oTr);
+            
+            var oTd = document.createElement("td");     //刪除
+            oTd.innerHTML = "<a href='javascript:;'>刪除</a>";
+            oTr.appendChild(oTd);
+
+            oTab.tBodies[0].appendChild(oTr);
+        }
+
+    </script>
+</head>
+
+<body>
+    姓名：<input type="text" name="" id="">
+    年齡：<input type="text" name="" id="">
+    <button onclick="New()">新增</button>
+    <br />
+    <br />
+    <table border="1" width="400" id="tb1">
+        <thead>
+            <td>ID</td>
+            <td>名稱</td>
+            <td>年齡</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>帥哥</td>
+                <td>20</td>
+                <td> <a href="javascript:;">刪除</a> </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

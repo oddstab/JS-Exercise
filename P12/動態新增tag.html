@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        window.onload = function (){
+            var btn = document.getElementById("btn");
+            var oUl = document.getElementById("ul1");
+            var tt = document.getElementById("tt");
+
+            btn.onclick = ()=>{
+                var oLi = document.createElement("li");
+                oLi.innerHTML = tt.value +"<a href='#' onclick='remove()'>刪除</a>";
+                oUl.appendChild(oLi);
+            };
+
+        };
+        function remove(){
+            var oUl = document.getElementById("ul1");
+            oUl.removeChild(this.parentNode);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="tt">
+    <button id="btn">創建li</button>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>

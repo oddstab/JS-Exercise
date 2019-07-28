@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 712px;
+            height: 108px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #div1 ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #div1 ul li {
+            float: left;
+            width: 178px;
+            height: 108px;
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            var oDiv = document.getElementById("div1");
+            var oUl = oDiv.getElementsByTagName("ul")[0];
+            var aLi = oUl.getElementsByTagName("li");
+
+            var speed = -2;
+
+            oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+            oUl.style.width = aLi[0].offsetWidth * aLi.length + "px";
+
+            function move() {
+                if (oUl.offsetLeft < -oUl.offsetWidth / 2) {
+                    oUl.style.left = "0";
+                }
+                oUl.style.left = oUl.offsetLeft + speed + "px";
+            }
+            var timer = setInterval(move, 30);
+
+            oDiv.onmouseover = () => {
+                clearInterval(timer);
+            };
+
+            oDiv.onmouseout = () => {
+                timer = setInterval(move, 30);
+            };
+
+            var btn = document.getElementsByTagName("button");
+
+            btn[0].onclick = () => {
+                speed = -2;
+            };
+            btn[1].onclick = () => {
+                speed = 2;
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button>往左</button>
+    <button>往右</button>
+    <div id="div1">
+        <ul>
+            <li><img width="178" src="/img/c5d1cdbc54417656588ceba6141bdb90.jpg" alt="" srcset=""> </li>
+            <li><img width="178" src="/img/eb9460e52e69b703327268bbb89068df.jpg" alt="" srcset=""> </li>
+            <li><img width="178" src="/img/f0cc718c1c0efe5c1be6d5a9eaee9544.jpg" alt="" srcset=""> </li>
+            <li><img width="178" src="/img/ezl4oHZ.gif" alt="" srcset=""> </li>
+        </ul>
+    </div>
+</body>
+
+</html>

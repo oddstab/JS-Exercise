@@ -1,15 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-    
+        window.onload = () => {
+            setInterval(tick, 1000);
+            tick();
+        };
+
+        function toTwo(int) {
+            if (int < 10) {
+                return "0" + int;
+            } else {
+                return "" + int;
+            }
+        }
+        function tick() {
+            var today = new Date();
+            var oImg = document.getElementsByTagName('img');
+            var h = toTwo(today.getHours());
+            var m = toTwo(today.getMinutes());
+            var s = toTwo(today.getSeconds());
+            var result = h + m + s;
+            // document.write(h + ":" + m + ":" + s + "<br/>");
+            for (var i in oImg) {
+                oImg[i].src = "img/Counter-" + result.charAt(i) + ".png";
+            }
+        }
     </script>
+    <style>
+        body {
+            width: 500px;
+            margin: 100px auto;
+            font-size: 40px;
+        }
+
+        img {
+            width: 32px;
+            height: 45px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div></div>
+    <img src="" alt="">
+    <img src="" alt="">:
+    <img src="" alt="">
+    <img src="" alt="">:
+    <img src="" alt="">
+    <img src="" alt="">
+    <label for="" style="border:1px solid #000;width: 200px;height: 200px;">
+        <input type="file" name="" id="">
+    </label>
 </body>
+
 </html>

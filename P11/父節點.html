@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = () => {
+
+            var aA = document.getElementsByTagName("a");
+
+            for (var i = 0; i < aA.length; i++) {
+                aA[i].onclick = function(){
+                    aA[i].partneNode.style.display = "none";
+                };
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>ajidad <a href="#">隱藏</a> </li>
+        <li>asdasdd <a href="#">隱藏</a> </li>
+        <li>ffdsajidad <a href="#">隱藏</a> </li>
+        <li>zzzajidad <a href="#">隱藏</a> </li>
+        <li>ajsdfidad <a href="#">隱藏</a> </li>
+    </ul>
+</body>
+
+</html>

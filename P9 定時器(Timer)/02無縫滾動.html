@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            /** 屏蔽鼠标右键 */
+            document.oncontextmenu = function () { return false; }
+            //或者  
+            document.onmousedown = function (event) {
+                event = window.event || event;
+                if (document.all && event.button == 2) {
+                    event.returnvalue = false;
+                }
+            }
+
+            var oDiv = document.getElementById("div1");
+            setInterval(() => {
+                oDiv.style.left = oDiv.offsetLeft + 1 + "px";
+            }, 0);
+        }
+    </script>
+</head>
+
+<body oncopy='return false' oncut='return false'>
+    <div id="div1">
+
+    </div>
+</body>
+
+</html>

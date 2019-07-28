@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .second {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: #4a8;
+            width: 70px;
+            height: 70px;
+            top: 90px;
+            left: 850px;
+            position: absolute;
+            z-index: 99;
+        }
+
+        .progressbar {
+            margin: 120px auto;
+            border: 1px solid #000;
+            height: 60px;
+            width: 460px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #bar {
+            background: rgb(40, 192, 61);
+            height: 60px;
+            width: 460px;
+            left: 0;
+            position: absolute;
+        }
+    </style>
+    <script>
+        var timea = null;
+        var progress = null;
+        window.onload = () => {
+            // timea = setInterval(timer, 1000);
+            // progress = setInterval(left, 22);
+            timea = setInterval(timer, 1000);
+            progress = setInterval(left, 22);
+        }
+        function left() {
+            var oBar = document.getElementById("bar");
+            oBar.style.left = oBar.offsetLeft - 1 + "px";
+
+            var display = document.getElementById("display");
+            var oBarWidth = -parseInt(getComputedStyle(oBar).width);
+        }
+        function timer() {
+            var time = document.getElementsByClassName("second")[0];
+            time.innerHTML = time.innerHTML - 1;
+            if (time.innerHTML == "0"){
+                clearInterval(timea);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="left()">按我左移</button>
+    <div class="second">10</div>
+    <div class="progressbar">
+        <div id="bar"></div>
+    </div>
+
+</body>
+
+</html>
