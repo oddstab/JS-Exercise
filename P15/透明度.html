@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #888;
+        }
+
+        #img1 {
+            opacity: 0.3;
+            width: 800px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var img1 = document.getElementById("img1");
+            img1.onmouseover = () => {
+                move();
+            };
+            img1.onmouseout = () => {
+                move2();
+            };
+        };
+        function move2() {
+            var img1 = document.getElementById("img1");
+            var opacity = getComputedStyle(img1).opacity;
+            var timer = null;
+            
+            timer = setInterval(() => {
+                opacity = parseFloat(opacity) + -0.1;
+                if (opacity <= 0.3) {
+                    clearInterval(timer);
+                }
+                else {
+                    img1.style.opacity = opacity;
+                }
+            }, 20);
+        }
+        function move() {
+            var img1 = document.getElementById("img1");
+            var opacity = getComputedStyle(img1).opacity;
+            var timer = null;
+            
+            timer = setInterval(() => {
+                opacity = parseFloat(opacity) + 0.1;
+                if (opacity >= 1) {
+                    clearInterval(timer);
+                }
+                else {
+                    img1.style.opacity = opacity;
+                }
+            }, 20);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <img src="/img/WsMan - 0411 (74144391) .jpg" alt="" id="img1">
+    </div>
+</body>
+
+</html>

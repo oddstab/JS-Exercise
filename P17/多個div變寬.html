@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 50px;
+            background: rgb(151, 76, 15);
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            var arrDiv = document.getElementsByTagName("div");
+            for (var i = 0;i < arrDiv.length;i++) {
+                arrDiv[i].timer =null;//為了防止打架，自己加個timer
+                arrDiv[i].onmouseover = function () {
+                    move(this, 400);
+                };
+                arrDiv[i].onmouseout = function () {
+                    move(this, 100);
+                }
+            }
+        };
+
+        function move(obj, target) {
+            clearInterval(obj.timer);//obj自己的timer
+            obj.timer = setInterval(() => {
+                var speed = (target - obj.offsetWidth) / 6;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(obj.offsetWidth==target){
+                    clearInterval(obj.timer);
+                }
+                else{
+                    obj.style.width = obj.offsetWidth+speed+"px";
+                }
+
+            }, 30);
+        }
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

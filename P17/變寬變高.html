@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="sty=device-sty, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 8px solid #000;
+            background: #ac1;
+            width:  300px;
+            height: 300px;
+            margin: 10px;
+            float: left;
+            font-size: 99px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var d1 = document.getElementById("div1");
+            var sty = "width";
+            d1.onmouseover = function () {
+                move(this, 700,sty);
+            };
+            d1.onmouseout = function () {
+                move(this, 300,sty);
+            }
+
+            var d2 = document.getElementById("div2");
+            var  d2s = "height";
+            d2.onmouseover = function(){
+                move(this,700,d2s);
+            }
+            d2.onmouseout = function (){
+                move(this,300,d2s);
+            }
+        }
+
+        function move(obj, target,name) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                var sty = parseInt(getStyle(obj,name));
+                var speed = (target - sty) / 6;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if (sty == target) {
+                    clearInterval(obj.timer);
+                }
+                else {
+                    obj.style[name] = sty + speed + "px";
+                }
+            }, 30);
+        }
+
+        function getStyle(obj,name){
+            if(obj.currentStyle){
+                return obj.currentStyle[name];
+            }
+            else{
+                return getComputedStyle(obj)[name];
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">變寬</div>
+    <div id="div2">變高</div>
+</body>
+
+</html>

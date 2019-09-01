@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: #af9;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        function getPos(ev) {
+            var scrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollLeft =
+                document.documentElement.scrollLeft || document.body.scrollLeft;
+            return { x: ev.clientX + scrollLeft, y: ev.clientY + scrollTop }
+        }
+        document.onmousemove = function () {
+            var _event = event || ev;
+            var pos = getPos(_event);
+            var divs = document.getElementsByTagName("div");
+            for (var i = divs.length - 1;i > 0;i--) {
+                console.log(`i=${i}\ni-1=${i - 1}`);
+                divs[i].style.left = divs[i - 1].offsetLeft + "px";
+                divs[i].style.top = divs[i - 1].offsetTop + "px";
+                
+                divs[i].innerHTML = divs[i].style.left;
+                divs[i].innerHTML += ` , ${divs[i].style.top}`;
+            };
+            divs[0].style.left = pos.x + "px";
+            divs[0].style.top = pos.y + "px";
+        };
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

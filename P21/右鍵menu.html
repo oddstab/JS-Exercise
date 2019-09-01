@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #ccc;
+            list-style: none;
+            padding-left: 0;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+    <script>
+        function getPos(ev) {
+            var scrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollLeft =
+                document.documentElement.scrollLeft || document.body.scrollLeft;
+            return { x: ev.clientX + scrollLeft, y: ev.clientY + scrollTop }
+        }
+
+        document.oncontextmenu = function (ev) {
+            var menu = document.getElementById("menu");
+            var pos = getPos(event||ev);
+            menu.style.display = "block";//顯示菜單
+            menu.style.left = pos.x+"px";
+            menu.style.top = pos.y+"px";
+            return false;
+        }
+
+        document.onclick = function (ev) {
+            var menu = document.getElementById("menu");
+            menu["style"]["display"] = "none";
+        }
+        // document.onkeydown = function (key){
+        //     if(key.keyCode==123){
+        //         return false;
+        //     }
+        // }
+    </script>
+
+</head>
+
+<body>
+    <ul id="menu">
+        <li>開啟檔案</li>
+        <li>儲存網頁</li>
+        <li>列印</li>
+    </ul>
+</body>
+
+</html>

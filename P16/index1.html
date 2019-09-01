@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 700px;
+            top: 50px;
+        }
+
+        #div2 {
+            border: 1px solid #000;
+            width: 1px;
+            height: 300px;
+            position: absolute;
+            left: 300px;
+            top: 0;
+        }
+    </style>
+    <script>
+        function startMove() {
+            var div1 = document.getElementById("div1");
+            setInterval(() => {
+                var speed = (300 - div1.offsetLeft) / 6;
+                speed =
+                    speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                div1.style.left = div1.offsetLeft + speed + "px";
+                document.getElementById("display").value = div1.offsetLeft + " , " + speed;
+            }, 30);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="startMove()">button</button>
+    <input type="text" name="" id="display">
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 700px;
+            top: 50px;
+        }
+
+        #div2 {
+            border: 1px solid #000;
+            width: 1px;
+            height: 300px;
+            position: absolute;
+            left: 300px;
+            top: 0;
+        }
+
+        #div3 {
+            border: 1px solid #000;
+            width: 1px;
+            height: 300px;
+            position: absolute;
+            left: 600px;
+            top: 0;
+        }
+    </style>
+    <script>
+        var timer = null;
+        function startMove(target) {
+            clearInterval(timer);
+            var div1 = document.getElementById("div1");
+            timer = setInterval(() => {
+                var speed = (300 - div1.offsetLeft) / 6;
+                if (div1.offsetLeft < target)
+                    speed = 7;
+                else
+                    speed = -7;
+
+                if (Math.abs(target - div1.offsetLeft) <= 7) {
+                    clearInterval(timer);
+                    div1.style.left = target + "px";
+                    return;
+                }
+
+                div1.style.left = div1.offsetLeft + speed + "px";
+                document.getElementById("display").value = div1.offsetLeft + " , " + speed;
+            }, 30);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="startMove(300)">到300</button>
+    <button onclick="startMove(600)">到600</button>
+    <input type="text" name="" id="display">
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+
+</html>

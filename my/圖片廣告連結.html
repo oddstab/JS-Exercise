@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var timer = null;
+        var imgWidth = 400;
+        var imgHeight = 250;
+        var imgPause = 5000;//圖片停留時間
+        var imgSpeed = 20;//圖片特效速度
+
+        var chgLoop = 0;
+        var imgCount = 0;
+        var doChg = true;
+
+        //廣告圖片來源
+        var imgSrc = new Array(
+            `../img/05595c1ce58bddd195d51c2852004c33.jpg`,
+            `../img/064f16f92748037967bc71e75dd7dac1.jpg`,
+            `../img/0eadf37b545913d9b6251308a753dd4f.jpg`,
+            `../img/22fcb997ce67d436c85f05bd420717c4.jpg`,
+            `../img/4966d723283701ee9b3f3eaaf5d9bca5.jpg`
+        );
+
+        //廣告連結
+        var imgUrl = new Array(
+            "#",
+            "#",
+            "#",
+            "#",
+            "#",
+        );
+
+        //建立影像物件陣列，並將圖片檔案先儲存進去
+        var imgArray = new Array();
+        for (i in imgSrc) {
+            imgArray[i] = new Image();
+            imgArray[i].src = imgSrc[i];
+            console.log(imgSrc[i] + ", i=" + i);
+        }
+
+        //圖片設定
+        function ImgIni() {
+            doChg = true;
+            imgCount++;
+            if (imgCount >= imgSrc.length) {
+                imgCount = 0;
+            }
+            imgStretch();
+        }
+
+        //圖片放大
+        function imgStretch() {
+            if (doChg) {
+                var imgArea = document.getElementById("imgArea");
+                if (chgLoop <= 100) {
+                    imgArea.innerHTML = `<a href='#' target='_blank'>
+                            <img name='myPic' width='${chgLoop * imgWidth / 100}'
+                            height='${chgLoop * imgHeight / 100}' src='${imgArray[imgCount].src}'/>
+                            </a>`;
+                    chgLoop += 10;
+                    timer = setTimeout(imgStretch, imgSpeed);
+                }
+                else {
+                    chgLoop = 100;
+                    clearTimeout(timer);
+                    imgArea.innerHTML = `<a href='${imgUrl[imgCount]}' 
+                        target='_blank'><img name='myPic' src='${imgArray[imgCount].src}'/></a>`;
+                    timer = setTimeout(imgShirk, imgPause);
+                }
+            }
+        }
+
+        //圖片縮小效果
+        function imgShirk() {
+            if (doChg) {
+                var imgArea = document.getElementById("imgArea");
+                if (chgLoop >= 0) {
+                    imgArea.innerHTML = `<a href='#' target='_blank'>
+                            <img name='myPic' width='${chgLoop * imgWidth / 100} height='${chgLoop * imgHeight / 100}'
+                            src='#' />
+                            </a>`;
+                    chgLoop -= 10;
+                    timer = setTimeout(imgShirk, imgSpeed);
+                }
+                else {
+                    chgLoop = 0;
+                    clearTimeout(timer);
+                    ImgIni();
+                }
+            }
+        }
+
+        function mouse_in() {
+            doChg = false;
+        }
+
+        function mouse_out() {
+            doChg = true;
+            clearTimeout(timer);
+            imgStretch();
+        }
+    </script>
+</head>
+
+<body onload="imgStretch()">
+    <table>
+        <tr>
+            <td>
+                <img src="../img/03bb019e57ed99ba4a712c2253db509f.jpg" alt="">
+            </td>
+        </tr>
+        <tr>
+            <div id="imgArea" style="background-color: #fff" onmouseover="mouse_in()" onmouseout="mouse_out()">
+            </div>
+        </tr>
+        <tr>
+            <td>
+                <img src="../img/781f3c66b0a1361321245fe424e63610.jpg" alt="" srcset="">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
