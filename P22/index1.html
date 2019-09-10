@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            var btn3 = document.getElementById("btn3");
+            
+
+            function test(){
+                alert("ABC");
+            }
+
+            function showState(bind){
+                var label = document.getElementById("label");
+                if(bind){
+                    label.innerHTML = "已綁定";
+                }
+                else{
+                    label.innerHTML = "未綁定";
+                }
+            }
+            //新增綁定
+            btn2.onclick = function (){
+                btn.addEventListener("click",test);
+                showState(true);
+            }
+
+            //解除綁定
+            btn3.onclick = function (){
+                btn.removeEventListener("click",test);
+                showState(false);   
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <label for="" id="label">未綁定</label>
+    <button id="btn1">
+        按鈕
+    </button>
+    <button id="btn2">
+        新增綁定
+    </button>
+    <button id="btn3">
+        解除綁定
+    </button>
+</body>
+
+</html>

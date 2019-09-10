@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: #fed139;
+            border: 15px solid #aaa;
+        }
+
+        #div2 {
+            width: 800px;
+            height: 800px;
+            position: relative;
+            background-color: #ccc;
+            border: 10px solid #000;
+        }
+    </style>
+    <script>
+        onload = function () {
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            var disX = 0;
+            var disY = 0;
+            div1.onmousedown = function (ev) {
+                var _event = ev || event;
+                disX = _event.clientX - div1.offsetLeft;
+                disY = _event.clientY - div1.offsetTop;
+
+                document.onmousemove = function (ev) {
+                    _event = ev || event;
+
+                    var l = _event.clientX - disX;
+                    var t = _event.clientY - disY;
+
+                    var clientWidth = div2.offsetWidth;
+                    var clientHeight = div2.offsetHeight;
+                    var sideLength = 20;
+                    if (l < sideLength) {
+                        l = 0;
+                    }
+                    else if (l > clientWidth - div1.offsetWidth -sideLength) {
+                        l = clientWidth - div1.offsetWidth;
+                    }
+                    if (t < sideLength) {
+                        t = 0;
+                    }
+                    else if (t > clientHeight - div1.offsetHeight -sideLength) {
+                        t = clientHeight - div1.offsetHeight;
+                    }
+
+                    div1.style.left = l + "px";
+                    div1.style.top = t + "px";
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div2">
+        <div id="div1">
+
+        </div>
+    </div>
+</body>
+
+</html>

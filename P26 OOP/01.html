@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        function Create(name,phone){
+
+            //var obj = new Object();
+            this.name = name;
+            this.phone = phone;
+            
+            this.showName = function () {
+                alert("我的名字叫:"+name);
+            }
+            
+            this.showPhone = function () {
+                alert("我的手機叫:"+phone);
+            }
+        }
+        var obj = new Create("大傻","0912345678");
+        // alert(obj.name); 
+        // alert(obj.phone);
+        obj.showName();
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

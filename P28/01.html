@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 button.active {
+            background: #a91;
+            color: #fff;
+        }
+
+        #div1 div {
+            width: 300px;
+            height: 300px;
+            background: #ccc;
+            display: none;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementById("div1");
+            var btn = div1.getElementsByTagName("button");
+            var allDiv = div1.getElementsByTagName("div");
+            for (var i = 0;i < btn.length;i++) {
+                btn[i].index = i;
+                btn[i].onclick = function (){
+                    for(var j = 0;j<btn.length;j++){
+                        btn[j].className = "";
+                        allDiv[j].style.display = "none";
+                    }
+                    this.className ="active";
+                    allDiv[this.index].style.display = "block";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+
+        <button class="active">AAA</button>
+        <button>BBB</button>
+        <button>CCC</button>
+        <div style="display:block">1111111111111111</div>
+        <div>2222222222222222</div>
+        <div>3333333333333333</div>
+    </div>
+</body>
+
+</html>

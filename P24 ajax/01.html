@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn1");
+            btn.onclick = function () {
+
+                //1 創建
+                var ajax = new XMLHttpRequest();
+
+                //2 連接server
+                ajax.open("get","qq.txt",true);//不分大小寫
+
+                //3 發送request
+                ajax.send();
+
+                //4 接收返回
+                ajax.onreadystatechange=function (){
+                    if(ajax.readyState == 4){//讀取完成
+                        if(ajax.status == 200){//成功
+                            alert("Success"+ajax.responseText);
+                        }
+                        else{
+                            alert("Fail:"+ajax.status);
+                        }
+                    }
+                }
+            };
+        }   
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">按我</button>
+</body>
+
+</html>

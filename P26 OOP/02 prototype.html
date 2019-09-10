@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function QQQ(){}
+        /*
+        加上new的話會自動宣告
+        並寫會自動return
+        */
+        var custom = new QQQ();
+        
+        QQQ.prototype.replace = function (){
+            alert("QQQQQ");
+        }
+        custom.replace();
+
+        var arr1 = new Array(10, 20, 10);
+        var arr2 = new Array(100, 200);
+
+        //給所有的Array加上sum這個自訂的方法
+        Array.prototype.sum = function () {
+            var result = 0;
+            for (var i = 0;i < this.length;i++) {
+                result += this[i];
+            }
+            return result;
+        }
+        // alert(arr1.sum());
+        // alert(arr2.sum());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
