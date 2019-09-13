@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            background: #a91;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+        }
+
+        label {
+            position: absolute;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        var div1 = null,
+            x = null,
+            y = null,
+            mousePoint = null,
+            offsetLeftPoint = null;
+        window.onload = function () {
+            div1 = document.getElementById("div1");
+            div1.onmousedown = fnDown;
+        };
+        function fnDown(ev) {
+            var _event = ev || Event;
+
+            x = _event.clientX - div1.offsetLeft;
+            y = _event.clientY - div1.offsetTop;
+
+            //顯示座標
+            mousePoint = document.getElementsByTagName("label")[0];
+            offsetLeftPoint = document.getElementsByTagName("label")[1];
+
+            document.onmousemove = fnMove;
+            document.onmouseup = fnUP;
+        };
+        function fnMove(ev) {
+            var _event = ev || Event;
+            div1.style.left = _event.clientX - x + "px";
+            div1.style.top = _event.clientY - y + "px";
+
+            mousePoint.innerHTML = `滑鼠座標：${_event.clientX}`;
+            offsetLeftPoint.innerHTML = `div1的offsetLeft：${div1.style.left}`;
+        }
+        function fnUP(ev) {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    </script>
+</head>
+
+<body>
+    <label></label><br>
+    <label></label>
+    <div id="div1">
+
+    </div>
+</body>
+
+</html>

@@ -39,7 +39,10 @@
                     mousePoint.innerHTML = `滑鼠座標：${_event.clientX}`;
                     offsetLeftPoint.innerHTML = `div1的offsetLeft：${div1.style.left}`;
                 }
-
+                document.onmouseup = function (ev){
+                    document.onmousemove=null;
+                    document.onmouseup = null;
+                }
             }
         }
     </script>
